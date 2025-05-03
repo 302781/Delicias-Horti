@@ -4,24 +4,17 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import ProductDetail from './pages/ProductDetail';
-import { AuthProvider } from './context/AuthContext';
 import Recipes from './pages/Recipes';
 import RecipeDetail from './pages/RecipeDetail';
 import NovaReceita from './pages/NovaReceita';
 import Carrinho from './pages/Carrinho';
+import Login from './pages/Login';       // certifique-se que esses arquivos existem
+import Cadastro from './pages/Cadastro'; // certifique-se que esses arquivos existem
 
 const App: React.FC = () => {
-  ReactDOM.createRoot(document.getElementById('root')!).render(
   return (
     <div>
       <Header />
-      <React.StrictMode>
-        <BrowserRouter>
-          <AuthProvider>
-            <App />
-          </AuthProvider>
-        </BrowserRouter>
-      </React.StrictMode>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/produto/:id" element={<ProductDetail />} />
@@ -37,5 +30,5 @@ const App: React.FC = () => {
   );
 };
 
-
 export default App;
+
