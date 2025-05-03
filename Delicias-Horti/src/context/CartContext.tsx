@@ -2,6 +2,11 @@ import React, { createContext, useContext, useState, ReactNode } from 'react';
 import { products } from '../data/products';
 import { coupons } from '../data/coupons';
 
+interface Coupon {
+  code: string;
+  discount: number;
+}
+
 interface CartItem {
   name: string;
   quantity: number;
@@ -17,10 +22,10 @@ interface CartContextType {
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
-const [coupon, setCoupon] = useState<Coupon | null>(null);
 
 export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [cart, setCart] = useState<CartItem[]>([]);
+  const [coupon, setCoupon] = useState<Coupon | null>(null);
 
   const addToCart = (name: string) => {
     setCart(prev => {
@@ -40,6 +45,15 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 
   const clearCart = () => setCart([]);
 
+  const applyCoupon = (code: string): boolean => {
+    const match = coupons.find(c => c.code.toLowerCase() === code.toLowerCase());
+    if (match) {
+      setCoupon(match);
+      return true;
+    }
+    return false;
+  };
+
   return (
     <CartContext.Provider value={{ cart, addToCart, removeFromCart, clearCart, coupon, applyCoupon }}>
       {children}
@@ -53,11 +67,3 @@ export const useCart = () => {
   return context;
 };
 
-const applyCoupon = (code: string) => {
-  const match = coupons.find(c => c.code.toLowerCase() === code.toLowerCase());
-  if (match) {
-    setCoupon(match);
-    return true;
-  }
-  return false;
-};
