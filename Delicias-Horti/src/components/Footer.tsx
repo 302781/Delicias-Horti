@@ -1,16 +1,9 @@
 import React from 'react';
+import styles from './Footer.module.css';
 
 const Footer: React.FC = () => {
   return (
-    <footer style={{
-      padding: '1rem',
-      backgroundColor: '#f1f1f1',
-      textAlign: 'center',
-      position: 'relative',
-      bottom: 0,
-      width: '100%',
-      marginTop: '2rem'
-    }}>
+    <footer className={styles.footer}>
       <p>&copy; 2025 <strong>Delícias Horti</strong>. Todos os direitos reservados.</p>
     </footer>
   );

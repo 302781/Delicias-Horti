@@ -18,7 +18,7 @@ const Header: React.FC = () => {
         )}
         {user && (
           <>
-            <span style={{ marginRight: '1rem' }}>Olá, {user}!</span>
+            <span className="user-greeting">Olá, {user}!</span>
             <button onClick={logout} style={{ background: 'white', color: '#4CAF50', border: 'none', cursor: 'pointer' }}>
               Sair
             </button>
