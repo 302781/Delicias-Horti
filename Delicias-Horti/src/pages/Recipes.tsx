@@ -1,8 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { recipes } from '../data/recipes';
+import { useRecipes } from '../context/RecipeContext';
 
 const Recipes: React.FC = () => {
+  const { recipes } = useRecipes();
   return (
     <main style={{ padding: '1rem' }}>
       <h2>Receitas Deliciosas</h2>

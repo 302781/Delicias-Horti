@@ -1,10 +1,17 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { recipes } from '../data/recipes';
+import { useRecipes } from '../context/RecipeContext';
+import { useCart } from '../context/CartContext';
+
 
 const RecipeDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const recipe = recipes.find(r => r.id === Number(id));
+  const { addToCart } = useCart();
+  const handleAddIngredients = () => {
+    recipe.ingredients.forEach(ingredient => addToCart(ingredient));
+  };
 
   if (!recipe) return <p>Receita não encontrada.</p>;
 
@@ -20,6 +27,9 @@ const RecipeDetail: React.FC = () => {
       <p>{recipe.instructions}</p>
       <br />
       <Link to="/receitas">← Voltar às receitas</Link>
+      <button onClick={handleAddIngredients}>
+        Adicionar ingredientes ao carrinho
+      </button>
     </main>
   );
 };

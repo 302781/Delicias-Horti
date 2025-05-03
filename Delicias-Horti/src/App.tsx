@@ -7,6 +7,8 @@ import ProductDetail from './pages/ProductDetail';
 import { AuthProvider } from './context/AuthContext';
 import Recipes from './pages/Recipes';
 import RecipeDetail from './pages/RecipeDetail';
+import NovaReceita from './pages/NovaReceita';
+import Carrinho from './pages/Carrinho';
 
 const App: React.FC = () => {
   ReactDOM.createRoot(document.getElementById('root')!).render(
@@ -27,6 +29,8 @@ const App: React.FC = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/receitas" element={<Recipes />} />
         <Route path="/receitas/:id" element={<RecipeDetail />} />
+        <Route path="/receitas/nova" element={<NovaReceita />} />
+        <Route path="/carrinho" element={<Carrinho />} />
       </Routes>
       <Footer />
     </div>

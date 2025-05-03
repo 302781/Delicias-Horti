@@ -26,6 +26,8 @@ const Header: React.FC = () => {
         )}
       </nav>
       <Link to="/receitas" style={{ color: 'white', marginRight: '1rem' }}>Receitas</Link>
+      <Link to="/receitas/nova" style={{ color: 'white', marginRight: '1rem' }}>Nova Receita</Link>
+      <Link to="/carrinho" style={{ color: 'white', marginRight: '1rem' }}>Carrinho</Link>
     </header>
   );
 };
